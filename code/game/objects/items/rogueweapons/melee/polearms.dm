@@ -1700,6 +1700,33 @@
 		added_def = 2,\
 	)
 
+/obj/item/rogueweapon/woodstaff/quarterstaff/silver/bishop
+	name = "bishop's quarterstaff"
+	desc = "A signal of the Chosen of Astrata- a durable, silver-made quarterstaff to bash heads and teach studens alike. The shaft is wrapped with wraps that carries Astrata's colours."
+	force = 23
+	force_wielded = 29
+	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff, /datum/intent/bless)
+	icon_state = "quarterstaff_bishop"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	max_integrity = 350
+	is_silver = TRUE
+
+/obj/item/rogueweapon/woodstaff/quarterstaff/silver/bishop/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_TENNITE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 0,\
+		added_def = 0,\
+	)
+
+/obj/item/rogueweapon/woodstaff/quarterstaff/silver/bishop/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_CHOSEN, "STAFF", "SUNDERED BY THE SUN")
+
+
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 	name = "psydonic quarterstaff"
 	desc = "A quarterstaff reinforced with silver tips. A relatively new design, purportedly inspired by the warstaffs oft-carried by Naledian warscholars. Durable enough to catch avantyne to the shaft, without so much as a splinter - or so, they say."
